@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Массаж в Красноярске | Студия Engel Massage — Цены и запись</title>
+    <meta name="description" content="Профессиональный массаж в Красноярске. Классический, спортивный массаж, коррекция осанки от дипломированного специалиста на ул. Ленина, 116. Узнайте цены и запишитесь онлайн!">
+    <!-- Подключаем библиотеку анимаций AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --bg-color: #242426; 
+            --card-bg: #2d2d30; 
+            --primary-color: #1a1a1c; 
+            --accent-color: #c47b48; 
+            --accent-hover: #a36133;
+            --text-color: #f5f5f5; 
+            --text-muted: #b0b0b0; 
+            --border-color: #3f3f42; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Защита всех картинок на сайте от сохранения и контекстного меню */
+        img {
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        /* Шапка */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: var(--primary-color); color: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px; }
+        .logo { display: flex; align-items: center; gap: 15px; font-size: 20px; font-weight: 600; color: var(--accent-color); letter-spacing: 1px; }
+        .logo-em { 
+            width: 45px; height: 45px; background: linear-gradient(135deg, #d49363, #a36133); 
+            border-radius: 8px; display: flex; justify-content: center; align-items: center; 
+            color: #1a1a1c; font-weight: 700; font-size: 20px; box-shadow: 0 3px 10px rgba(196,123,72,0.3);
+        }
+
+        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.9rem; }
+        .nav-links a { color: #fff; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-color); }
+        .contact-top { font-weight: 600; color: #fff; text-align: right; font-size: 0.95rem; }
+        .contact-top span { display: block; font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+
+        /* БЛОК "О МАСТЕРЕ" */
+        .about-section { padding: 80px 5%; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); }
+        .about-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .about-image { flex: 1; min-width: 280px; position: relative; }
+        .about-image img { width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color); display: block; }
+        .about-text { flex: 1.5; min-width: 280px; }
+        .about-text h2 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; font-weight: 500; }
+        .about-text h2 span { color: var(--accent-color); }
+        .about-text p { font-size: 1.1rem; color: #ddd; margin-bottom: 15px; line-height: 1.8; }
+        .about-text ul { color: #ddd; margin-bottom: 15px; padding-left: 20px; line-height: 1.6; }
+        .about-text ul li { margin-bottom: 8px; }
+        .about-text ul li strong { color: var(--accent-color); }
+        
+        .docs-container { display: flex; gap: 15px; margin-top: 20px; margin-bottom: 25px; flex-wrap: wrap; }
+        .doc-link { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; background: rgba(196, 123, 72, 0.1); border: 1px solid var(--accent-color); color: var(--accent-color); border-radius: 8px; font-weight: 500; transition: 0.3s; font-size: 0.95rem; }
+        .doc-link:hover { background-color: var(--accent-color); color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(196, 123, 72, 0.2); }
+
+        /* Главный экран (Hero) */
+        .hero { 
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff; 
+            background: linear-gradient(rgba(26, 26, 28, 0.8), rgba(26, 26, 28, 0.95)), url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1950&q=80') center/cover; 
+            padding: 80px 20px; border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: var(--accent-color); font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 30px; color: #f0f0f0; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        
+        .hero-benefits { background: rgba(30, 30, 33, 0.8); padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); max-width: 700px; width: 100%; margin-bottom: 40px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .hero-benefits p.title { color: var(--accent-color); font-weight: 500; font-size: 1.1rem; margin-bottom: 15px; text-shadow: none; }
+        .hero-benefits ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+        .hero-benefits ul li { margin-bottom: 10px; font-size: 0.95rem; color: #ddd; position: relative; padding-left: 25px; line-height: 1.5; }
+        .hero-benefits ul li:last-child { margin-bottom: 0; }
+        .hero-benefits ul li::before { content: '✓'; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; font-size: 1.1rem; }
+        .hero-benefits ul li strong { color: #fff; font-weight: 500; }
+
+        .btn { padding: 15px 35px; background-color: var(--accent-color); color: #fff; border-radius: 30px; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; font-size: 1rem; display: inline-block; text-align: center; }
+        .btn:hover { background-color: var(--accent-hover); transform: scale(1.05); }
+
+        /* ГАЛЕРЕЯ КАБИНЕТА */
+        .gallery-section { padding: 80px 5%; background-color: var(--primary-color); border-bottom: 1px solid var(--border-color); text-align: center; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .gallery-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.3); height: 280px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; display: block; }
+        .gallery-item img:hover { transform: scale(1.05); }
+
+        /* Общие стили секций */
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--text-color); font-weight: 500; }
+        .section-title span { color: var(--accent-color); }
+
+        /* Блок Акций */
+        .promotions { padding: 80px 5%; background-color: var(--primary-color); border-bottom: 1px solid var(--border-color); }
+        .promo-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .promo-card { background: var(--card-bg); padding: 40px 30px; border-radius: 15px; border: 1px solid var(--border-color); text-align: center; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .promo-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent-color); }
+        .promo-card h3 { color: var(--accent-color); font-size: 1.5rem; margin-bottom: 15px; }
+        .promo-card p { font-size: 1.1rem; margin-bottom: 20px; color: var(--text-color); }
+        .promo-card .highlight { font-size: 1.2rem; font-weight: 600; color: #fff; background: rgba(196, 123, 72, 0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px; border: 1px dashed var(--accent-color); }
+        .promo-card .profit { font-size: 0.95rem; color: #4caf50; font-weight: 600; margin-top: -5px; margin-bottom: 15px; display: block;}
+
+        /* Прайс-лист и Описания */
+        .prices { padding: 80px 5%; max-width: 1100px; margin: 0 auto; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); }
+        .price-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .price-item { background: var(--card-bg); padding: 25px; border-radius: 12px; border-left: 4px solid var(--accent-color); box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .price-item:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(196, 123, 72, 0.2); }
+        .price-item h3 { font-size: 1.1rem; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 5px; color: #fff; gap: 10px; }
+        .price-item span { color: var(--accent-color); font-weight: 600; font-size: 1.2rem; white-space: nowrap; }
+        .duration { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; }
+
+        details { margin-top: 15px; }
+        summary { cursor: pointer; color: var(--accent-color); font-weight: 500; font-size: 0.95rem; outline: none; list-style: none; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: '+'; display: inline-block; width: 18px; height: 18px; text-align: center; border: 1px solid var(--accent-color); border-radius: 50%; line-height: 16px; font-size: 14px; flex-shrink: 0; }
+        details[open] summary::before { content: '-'; }
+        .desc-content { margin-top: 15px; font-size: 0.95rem; color: #ddd; animation: fadeIn 0.4s ease-in-out; }
+        .desc-content p { margin-bottom: 8px; }
+        .desc-content ul { padding-left: 0; margin-bottom: 15px; }
+        .desc-content ul li { list-style-type: none; position: relative; padding-left: 15px; margin-bottom: 5px; }
+        .desc-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent-color); }
+
+        /* Дополнительные услуги */
+        .addons { margin-top: 40px; background: var(--card-bg); color: #fff; padding: 35px; border-radius: 12px; border: 1px solid var(--border-color); }
+        .addons h3 { color: var(--accent-color); margin-bottom: 20px; font-weight: 500; font-size: 1.4rem; }
+        .addons-list { display: flex; flex-direction: column; gap: 15px; }
+        .addon-item { border-bottom: 1px dashed var(--border-color); padding-bottom: 15px; }
+        .addon-header { display: flex; justify-content: space-between; font-weight: 500; color: #fff; gap: 10px; }
+
+        /* Блок записи DIKIDI */
+        .booking-section { background-color: var(--primary-color); padding: 100px 5%; border-bottom: 1px solid var(--border-color); text-align: center; }
+        .booking-container { max-width: 800px; margin: 0 auto; background: var(--card-bg); border-radius: 20px; padding: 40px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid var(--border-color); }
+        .booking-container h3 { color: var(--accent-color); font-size: 2rem; margin-bottom: 20px; }
+        .booking-container p { color: #ddd; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
+
+        /* БЛОК ОТЗЫВОВ */
+        .reviews-section { padding: 80px 5%; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); text-align: center; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 40px auto; text-align: left; }
+        .review-card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .review-card .stars { color: #FFD700; margin-bottom: 10px; font-size: 1.1rem; }
+        .review-card h4 { color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
+        .review-card p { color: #ccc; font-size: 0.95rem; font-style: italic; }
+
+        /* БЛОК FAQ (Часто задаваемые вопросы) */
+        .faq-section { padding: 80px 5%; background-color: var(--primary-color); border-bottom: 1px solid var(--border-color); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 15px; overflow: hidden; }
+        .faq-item summary { padding: 20px; font-size: 1.1rem; font-weight: 500; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .faq-item summary::before { display: none; }
+        .faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--accent-color); transition: 0.3s; flex-shrink: 0; }
+        .faq-item details[open] summary::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px 20px 20px; color: #ccc; font-size: 0.95rem; line-height: 1.6; }
+
+        /* Контакты */
+        .contacts { padding: 80px 5%; background-color: var(--bg-color); }
+        .contacts-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
+        .contact-info h2 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
+        .contact-info p { color: #ddd; }
+        .contact-info h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--accent-color); margin-top: 30px; }
+        .social-links { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+        .social-links a { padding: 12px 25px; border: 1px solid var(--accent-color); border-radius: 30px; color: var(--accent-color); font-weight: 500; transition: 0.3s; }
+        .social-links a:hover { background-color: var(--accent-color); color: #fff; }
+        .map { border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.3); height: 400px; border: 1px solid var(--border-color); }
+
+        footer { background-color: var(--primary-color); color: var(--text-muted); text-align: center; padding: 25px; border-top: 1px solid var(--border-color); }
+
+        /* ПЛАВАЮЩАЯ КНОПКА ЗАПИСИ */
+        .floating-btn { position: fixed; bottom: 30px; right: 30px; background-color: var(--accent-color); color: #fff; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 20px rgba(196, 123, 72, 0.5); z-index: 1500; transition: 0.3s; font-size: 28px; }
+        .floating-btn:hover { background-color: var(--accent-hover); transform: scale(1.1); }
+
+        /* Модальные окна */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 15px; text-align: center; max-width: 450px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; }
+        .modal-content h3 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.5rem; }
+        .modal-content p { color: #ddd; margin-bottom: 25px; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; color: #999; cursor: pointer; transition: 0.3s; }
+        .close-modal:hover { color: #fff; }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.95rem; color: #ddd; }
+        .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 12px; background: #353538; border: 1px solid #4f4f52; border-radius: 8px; font-size: 1rem; color: #fff; outline: none; }
+        .form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-color); }
+
+        @media (max-width: 768px) { 
+            .contacts-container, .about-container { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 2.2rem; } 
+            .nav-links { display: none; } 
+            header { padding: 10px 4%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Плавающая кнопка быстрой записи -->
+    <a href="https://dikidi.ru/2171161" target="_blank" class="floating-btn" title="Записаться онлайн">📅</a>
+
+    <header>
+        <div class="logo">
+            <div class="logo-em">EM</div>
+            ENGEL MASSAGE
+        </div>
+        <div class="nav-links">
+            <a href="#about">О мастере</a>
+            <a href="#gallery">Кабинет</a>
+            <a href="#promotions">Акции</a>
+            <a href="#prices">Услуги</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#faq">FAQ</a>
+            <a href="#booking">Запись</a>
+        </div>
+        <div class="contact-top">
+            <a href="tel:+79131983477">+7 (913) 198-34-77</a>
+            <span>ул. Ленина, 116</span>
+        </div>
+    </header>
+
+    <!-- О мастере -->
+    <section class="about-section" id="about" data-aos="fade-up">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="вова.jpg" alt="Массажист Владимир за работой в Красноярске">
+            </div>
+            <div class="about-text">
+                <h2>Ваш <span>массажист</span></h2>
+                <p>Меня зовут Владимир, и я — профессиональный массажист в Красноярске. Моя главная цель — помочь вам избавиться от боли, снять мышечное напряжение и вернуть телу легкость.</p>
+                
+                <p><strong>Мое образование и квалификация:</strong></p>
+                <ul>
+                    <li><strong>Сибирский федеральный университет:</strong> тренер-преподаватель по адаптивной физической культуре и спорту.</li>
+                    <li><strong>Свидетельство:</strong> Основы классического массажа.</li>
+                </ul>
+
+                <div class="docs-container">
+                    <a href="DIPLOM.pdf" target="_blank" class="doc-link">📄 Посмотреть диплом</a>
+                    <a href="Rossii_774_skaya_Federatsia.pdf" target="_blank" class="doc-link">📄 Посмотреть свидетельство</a>
+                </div>
+
+                <p>Я использую индивидуальный подход к каждому клиенту, сочетая классические и современные техники. Работаю как с глубокими зажимами, так и с общим расслаблением организма.</p>
+                <p>Доверьте заботу о своем теле профессионалу. Буду рад видеть вас на сеансе в студии Engel Massage!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Главный экран -->
+    <section class="hero" data-aos="fade-up">
+        <h1>Массаж в Красноярске — Эстетика вашего тела</h1>
+        <p>Современная студия массажа в центре Красноярска. Отдохните от городской суеты, снимите напряжение и восстановите силы в атмосферном пространстве.</p>
+        
+        <div class="hero-benefits">
+            <p class="title">Чем полезен массаж?</p>
+            <ul>
+                <li><strong>Снимает напряжение:</strong> Устраняет мышечные зажимы и спазмы после работы или тренировок.</li>
+                <li><strong>Улучшает здоровье:</strong> Стимулирует кровообращение, лимфоток и ускоряет обмен веществ.</li>
+                <li><strong>Восстанавливает нервную систему:</strong> Снижает уровень стресса, тревожности и улучшает качество сна.</li>
+                <li><strong>Корректирует фигуру:</strong> Помогает в борьбе с отеками и делает кожу более подтянутой и упругой.</li>
+            </ul>
+        </div>
+
+        <a href="#booking" class="btn">Записаться онлайн</a>
+    </section>
+
+    <!-- СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ -->
+    <section class="promotions" id="promotions" data-aos="fade-up">
+        <h2 class="section-title">Специальные <span>предложения</span></h2>
+        <div class="promo-container">
+            <div class="promo-card">
+                <h3>Акция знакомства</h3>
+                <p>Подарите себе первый шаг к расслаблению.</p>
+                <div class="highlight">Скидка 20%</div>
+                <p style="font-size: 0.95rem; color: var(--text-muted);">На первый сеанс классического массажа в нашей студии.</p>
+                <a href="#booking" class="btn" style="display: inline-block; margin-top: 10px; padding: 10px 25px;">Записаться</a>
+            </div>
+            <div class="promo-card">
+                <h3>Выгодные абонементы</h3>
+                <p>Курс массажа — лучшая инвестиция в здоровье.</p>
+                <div class="highlight">4 массажа — 8 000₽</div>
+                <span class="profit">Ваша выгода: 2 000₽</span>
+                <div class="highlight">8 массажей — 15 000₽</div>
+                <span class="profit">Ваша выгода: 5 000₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ КАБИНЕТА -->
+    <section class="gallery-section" id="gallery" data-aos="fade-up">
+        <h2 class="section-title">Атмосфера <span>нашего кабинета</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="кабинет 1.jpg" alt="Массажный кабинет Engel Massage в Красноярске"></div>
+            <div class="gallery-item"><img src="кабинет 2.jpg" alt="Рабочее пространство салона"></div>
+            <div class="gallery-item"><img src="кабинет 3.jpg" alt="Уютная зона отдыха для гостей"></div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="prices" id="prices" data-aos="fade-up">
+        <h2 class="section-title">Наши <span>услуги и цены</span></h2>
+        <div class="price-list">
+            
+            <div class="price-item">
+                <h3>Классический массаж <span>2500₽</span></h3>
+                <p class="duration">50 минут</p>
+                <details>
+                    <summary>Описание процедуры</summary>
+                    <div class="desc-content">
+                        <p><strong>Базовая техника:</strong> поглаживание, растирание, разминание, вибрация. Прорабатывает мышцы на разных уровнях — от поверхностных до глубоких.</p>
+                        <p><strong>Что даёт:</strong></p>
+                        <ul>
+                            <li>Снимает боль и напряжение в спине, шее, ногах</li>
+                            <li>Улучшает кровообращение и лимфоток</li>
+                            <li>Восстанавливает подвижность суставов</li>
+                            <li>Убирает зажимы и мышечные «блоки»</li>
+                        </ul>
+                        <p><strong>Кому:</strong> тем, кто много сидит, у кого болит спина или шея, кто хочет расслабиться и восстановиться.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="price-item">
+                <h3>Спортивный массаж <span>3000₽</span></h3>
+                <p class="duration">50 минут</p>
+                <details>
+                    <summary>Описание процедуры</summary>
+                    <div class="desc-content">
+                        <p><strong>Техника:</strong> Работает с мышцами до и после нагрузок. Бывает восстановительный, тонизирующий и предстартовый.</p>
+                        <p><strong>Что даёт:</strong></p>
+                        <ul>
+                            <li>Ускоряет восстановление после тренировок</li>
+                            <li>Снимает крепатуру и мышечную усталость</li>
+                            <li>Повышает тонус перед нагрузкой</li>
+                            <li>Помогает избежать травм и зажимов, улучшает эластичность</li>
+                        </ul>
+                        <p><strong>Кому:</strong> спортсменам, любителям фитнеса, тем, кто бегает, качает железо или играет в командные виды спорта.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="price-item">
+                <h3>Массаж шеи и головы <span>1500₽</span></h3>
+                <p class="duration">25 минут</p>
+                <details>
+                    <summary>Описание процедуры</summary>
+                    <div class="desc-content">
+                        <p><strong>Техника:</strong> Мягкая, но глубокая работа с шейно-воротниковой зоной и головой. Часто включает работу с плечами и точками на голове.</p>
+                        <p><strong>Что даёт:</strong></p>
+                        <ul>
+                            <li>Снимает напряжение в шее и плечах</li>
+                            <li>Помогает при головных болях и тяжести в голове</li>
+                            <li>Улучшает сон и общее самочувствие</li>
+                            <li>Расслабляет после сидячей работы и стресса</li>
+                        </ul>
+                        <p><strong>Кому:</strong> тем, кто много работает за компьютером, страдает от головных болей, бессонницы или постоянного стресса.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="price-item">
+                <h3>Коррекция осанки <span>3500₽</span></h3>
+                <p class="duration">50 минут</p>
+            </div>
+
+            <div class="price-item">
+                <h3>Массаж ног <span>2000₽</span></h3>
+                <p class="duration">40 минут</p>
+            </div>
+
+            <div class="price-item">
+                <h3>Антицеллюлитный массаж <span>2300₽</span></h3>
+                <p class="duration">40 минут</p>
+            </div>
+        </div>
+
+        <div class="addons">
+            <h3>Дополнительные процедуры</h3>
+            <div class="addons-list">
+                
+                <div class="addon-item">
+                    <div class="addon-header"><span>Баночный массаж</span> <span>500₽</span></div>
+                    <details>
+                        <summary>Описание процедуры</summary>
+                        <div class="desc-content">
+                            <p><strong>Техника:</strong> Использование вакуумных банок. Создаётся отрицательное давление, которое подтягивает ткани и улучшает микроциркуляцию.</p>
+                            <p><strong>Что даёт:</strong></p>
+                            <ul>
+                                <li>Глубоко прорабатывает мышцы и фасции</li>
+                                <li>Улучшает кровообращение и лимфоток</li>
+                                <li>Помогает при зажимах и спазмах, ускоряет обмен веществ</li>
+                            </ul>
+                            <p><strong>Кому:</strong> тем, у кого глубокие зажимы, кто хочет усилить эффект от массажа, а также в комплексной работе с рельефом тела.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-header"><span>Массаж лица</span> <span>500₽</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок записи DIKIDI -->
+    <section class="booking-section" id="booking" data-aos="fade-up">
+        <h2 class="section-title">Онлайн-<span>запись</span></h2>
+        <div class="booking-container">
+            <h3>Выберите удобное время</h3>
+            <p>Мы используем автоматическую систему записи. Нажмите на кнопку ниже, чтобы увидеть актуальное свободное время и моментально забронировать сеанс.</p>
+            <a href="https://dikidi.ru/2171161" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 50px;">Выбрать время и записаться</a>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews-section" id="reviews" data-aos="fade-up">
+        <h2 class="section-title">Отзывы <span>клиентов</span></h2>
+        <div class="reviews-grid" id="reviewsGrid">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>Анна С.</h4>
+                <p>«Потрясающий классический массаж! Спина перестала болеть после первого же сеанса. Очень приятная атмосфера в салоне, обязательно куплю абонемент.»</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>Дмитрий М.</h4>
+                <p>«Хожу на спортивный массаж после жестких тренировок. Мышцы восстанавливаются в два раза быстрее. Мастер точно знает своё дело, прорабатывает глубоко.»</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>Елена К.</h4>
+                <p>«Брала массаж шейно-воротниковой зоны из-за сидячей работы. Как будто заново родилась! Ушла тяжесть в голове, улучшился сон. Спасибо!»</p>
+            </div>
+        </div>
+        <button class="btn" onclick="document.getElementById('writeReviewModal').style.display='flex'">Оставить отзыв</button>
+    </section>
+
+    <!-- БЛОК FAQ (Часто задаваемые вопросы) -->
+    <section class="faq-section" id="faq" data-aos="fade-up">
+        <h2 class="section-title">Часто задаваемые <span>вопросы</span></h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <details>
+                    <summary>Нужно ли что-то брать с собой на сеанс?</summary>
+                    <div class="faq-answer">Всё необходимое (одноразовые простыни, салфетки, полотенца) уже предоставлено в студии. Вам нужно взять только хорошее настроение!</div>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>За сколько времени нельзя есть перед массажем?</summary>
+                    <div class="faq-answer">Рекомендуется плотно не кушать за 1.5–2 часа до начала сеанса, чтобы во время процедуры вы чувствовали себя комфортно.</div>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>Будет ли больно на спортивном массаже?</summary>
+                    <div class="faq-answer">Спортивный массаж предполагает интенсивную проработку мышц, возможны легкие болезненные ощущения в местах зажимов, но мастер всегда контролирует интенсивность по вашим ощущениям.</div>
+                </details>
+            </div>
+            <div class="faq-item">
+                <details>
+                    <summary>Имеются ли противопоказания?</summary>
+                    <div class="faq-answer">Да, массаж не рекомендуется при повышенной температуре, острых воспалительных процессах, онкологических заболеваниях и повреждениях кожи в зоне воздействия.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts" data-aos="fade-up">
+        <div class="contacts-container">
+            <div class="contact-info">
+                <h2>Ждем вас в салоне</h2>
+                <p><strong>Адрес:</strong> г. Красноярск, ул. Ленина, 116</p>
+                <p><strong>Телефон:</strong> <a href="tel:+79131983477" style="color: var(--accent-color);">+7 (913) 198-34-77</a></p>
+                
+                <div class="social-links">
+                    <a href="https://www.avito.ru/brands/9ad9e8130fd64884c76ee71d451964eb?src=sharing" target="_blank">Авито</a>
+                    <a href="https://vk.ru/club241696728" target="_blank">ВКонтакте</a>
+                </div>
+
+                <h3>📍 Геолокация и маршрут</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Нажмите на карту справа, чтобы построить удобный маршрут до нашего салона. Рядом есть удобная парковка.</p>
+            </div>
+            <div class="map">
+                <iframe src="https://yandex.ru/map-widget/v1/?text=Красноярск%2C+улица+Ленина%2C+116&z=17" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2026 Массажный салон Engel Massage в Красноярске. Все права защищены.</p></footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ НАПИСАНИЯ ОТЗЫВА -->
+    <div class="modal" id="writeReviewModal">
+        <div class="modal-content" style="text-align: left;">
+            <span class="close-modal" onclick="document.getElementById('writeReviewModal').style.display='none'">&times;</span>
+            <h3 style="text-align: center;">Оставить отзыв</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" id="revName" required placeholder="Например, Иван">
+                </div>
+                <div class="form-group">
+                    <label>Оценка</label>
+                    <select id="revStars" required>
+                        <option value="⭐⭐⭐⭐⭐">5 звезд - Отлично</option>
+                        <option value="⭐⭐⭐⭐">4 звезды - Хорошо</option>
+                        <option value="⭐⭐⭐">3 звезды - Нормально</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ваши впечатления</label>
+                    <textarea id="revText" rows="4" required placeholder="Напишите пару слов о массаже..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Отправить отзыв</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ОКНО УСПЕХА ДЛЯ ОТЗЫВА -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('successModal').style.display='none'">&times;</span>
+            <h3 id="successTitle">Спасибо за отзыв!</h3>
+            <p id="successText">Ваш отзыв успешно опубликован на сайте.</p>
+            <button class="btn" onclick="document.getElementById('successModal').style.display='none'">Хорошо</button>
+        </div>
+    </div>
+
+    <!-- Защита от скачивания картинок через клик правой кнопкой -->
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('contextmenu', e => e.preventDefault());
+        });
+    </script>
+
+    <!-- Подключаем скрипт анимаций AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Отправка отзывов
+        const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН'; 
+        const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID';
+
+        document.getElementById('reviewForm').onsubmit = function(event) {
+            event.preventDefault();
+            
+            const rName = document.getElementById('revName').value;
+            const rStars = document.getElementById('revStars').value;
+            const rText = document.getElementById('revText').value;
+
+            const msg = `📝 НОВЫЙ ОТЗЫВ НА САЙТЕ!\n\n👤 Имя: ${rName}\nОценка: ${rStars}\n💬 Текст: ${rText}`;
+            if (TELEGRAM_BOT_TOKEN !== 'ВАШ_ТОКЕН') {
+                fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(msg)}`);
+            }
+
+            const newReview = document.createElement('div');
+            newReview.className = 'review-card';
+            newReview.innerHTML = `<div class="stars">${rStars}</div><h4>${rName}</h4><p>«${rText}»</p>`;
+            document.getElementById('reviewsGrid').prepend(newReview); 
+
+            document.getElementById('writeReviewModal').style.display = 'none';
+            document.getElementById('successModal').style.display = 'flex';
+            
+            this.reset();
+        };
+    </script>
+</body>
+</html>
